@@ -5,6 +5,9 @@ function Form(props) {
   //submitイベントのデフォルト作動防止
   function handleSubmit(e) {
     e.preventDefault();
+    if(!name) {
+      return
+    }
     props.addTask(name);
     setName('');
   }

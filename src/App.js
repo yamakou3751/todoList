@@ -3,12 +3,14 @@ import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
 
+
 //コールバック変数処理
-function addTask(name) {
-  alert(name);
-}
 
 function App(props) {
+  function addTask(name) {
+    const newTask = { id: "id", name: name, completed: false };
+    setTasks([...tasks, newTask]);
+  }
   const [tasks, setTasks] = useState(props.tasks);
   const taskList = tasks.map(task => (
     <Todo
