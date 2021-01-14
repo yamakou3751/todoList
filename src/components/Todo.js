@@ -5,21 +5,21 @@ export default function Todo(props) {
   const [isEditing, setEditing] = useState(false);
 
   //edeitingTempleteでのform入力nameをフックする
-  // const [newName, setNewName] = useState("");
+  const [newName, setNewName] = useState("");
   //↑でform入力した文字をstate
-  // function handleChange(e) {
-  //   setNewName(e.target.value);
-  // }
+  function handleChange(e) {
+    setNewName(e.target.value);
+  }
   //コールバックprops（Formでaddtask()をコールバックしたのと同じ処理）
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   props.editTask(props.id, newName);
-  //   setNewName("");
-  //   setEditing(false);
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.editTask(props.id, newName);
+    setNewName("");
+    setEditing(false);
+  }
   //追加テンプレート：編集ver
   const editingTemplate = (
-    <form className="stack-small" >
+    <form className="stack-small" onSubmit={handleSubmit}>
       <div className="form-group">
         <label className="todo-label" htmlFor={props.id}>
           New name for {props.name}
@@ -28,8 +28,8 @@ export default function Todo(props) {
           id={props.id}
           className="todo-text"
           type="text"
-          // value={newName}
-          // onChange={handleChange}
+          value={newName}
+          onChange={handleChange}
         />
       </div>
       <div className="btn-group">
