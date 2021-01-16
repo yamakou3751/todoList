@@ -18,7 +18,7 @@ function Form(props) {
     <form onSubmit={handleSubmit}>
       <h2 className="label-wrapper">
         <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
+          何かやる事ある？
         </label>
       </h2>
       <input
@@ -31,7 +31,7 @@ function Form(props) {
         onChange={handleChange}
       />
       <button type="submit" className="btn btn__primary btn__lg">
-        Add
+        やる気があるなら押してくれ！！
       </button>
     </form>
   );

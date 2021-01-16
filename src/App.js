@@ -86,8 +86,8 @@ function App(props) {
   ));
 
   //リストのコメント部分の処理
-  const taskNum = taskList.length !== 1 ? 'tasks' : 'task';
-  const headingText = `${taskList.length} ${taskNum} remaining`;
+  const taskNum = taskList.length !== 1 ? 'コ' : 'コ';
+  const headingText = `やる事は ${taskList.length} ${taskNum} 残ってるよ♪`;
 
     return (
     <div className="todoapp stack-large">
