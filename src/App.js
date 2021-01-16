@@ -56,7 +56,7 @@ function App(props) {
         key={task.id}
         toggleTaskCompleted={toggleTaskCompleted}
         deleteTask={deleteTask}
-        edittTask={editTask}
+        editTask={editTask}
       />
     )
   );
