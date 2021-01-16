@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Todo(props) {
   //フック処理⇒isEditing=falseで初期設定
@@ -6,6 +6,11 @@ export default function Todo(props) {
 
   //edeitingTempleteでのform入力nameをフックする
   const [newName, setNewName] = useState("");
+
+  //ref属性にフォーカスするフック？２つのtempleteでのフィールド用とボタン用
+  const editFieldRef = useRef(null);
+  const editButtonRef = useRef(null);
+
   //↑でform入力した文字をstate
   function handleChange(e) {
     setNewName(e.target.value);
@@ -30,6 +35,7 @@ export default function Todo(props) {
           type="text"
           value={newName}
           onChange={handleChange}
+          ref={editFieldRef}
         />
       </div>
       <div className="btn-group">
@@ -64,7 +70,12 @@ export default function Todo(props) {
         </label>
       </div>
       <div className="btn-group">
-        <button type="button" className="btn" onClick={() => setEditing(true)}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => setEditing(true)}
+          ref={editButtonRef}
+        >
           Edit <span className="visually-hidden">{props.name}</span>
         </button>
         <button
@@ -77,5 +88,14 @@ export default function Todo(props) {
       </div>
     </div>
   );
+  //関数処理の後に起こるように設定する高階関数
+  useEffect(() => {
+    if (isEditing) {
+      editFieldRef.current.focus();
+    } else {
+      editButtonRef.current.focus();
+    }
+  }, [isEditing]);
+
   return <li className="todo">{isEditing ? editingTemplate : viewTemplate}</li>;
 }

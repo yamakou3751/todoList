@@ -60,6 +60,7 @@ function App(props) {
     setTasks(editedTaskList);
   }
 
+  //FILTER_MAPでfilterしたtaskだけmapに渡す
   const taskList = tasks
   .filter(FILTER_MAP[filter])
   .map(task => (
